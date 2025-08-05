@@ -1,0 +1,245 @@
+.scrollComponent{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}    
+.createPostContainer{
+    display: flex;
+    width: 100%;
+    height: 10svh;
+    padding-inline: 1rem;
+    gap: 1.3rem;
+    align-items: center;
+    background: rgb(249, 243, 243);
+    border-radius: 20px;
+
+    position: relative;
+}
+
+.uploadButton{
+    position: absolute;
+    right: 0rem;
+    bottom: -50%;
+    cursor: pointer;
+    background-color: rgb(81, 168, 230);
+    color: white;
+    padding-inline: 1.2rem;
+    border-radius: 10px;
+    padding-block: 0.5rem;
+}
+.createPostContainer > textarea{
+    width: 100%;
+}
+
+.FAB{
+    background: rgb(110, 174, 216);
+    border-radius: 100%;
+    color: white;
+    justify-content: center;
+    display: flex;
+}
+.FAB > svg{
+    width: fit-content;
+    height: 40px;
+    cursor: pointer;
+}
+.userProfile{
+    border-radius: 100%;
+    height: 60%;
+    width: fit-content;
+
+}
+
+.textarea{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(97, 99, 100);
+    outline: none;
+}
+
+.singleCard{
+    
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 1px solid rgb(97, 99, 100);
+    
+}
+
+.singleCard_profileContainer{
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    padding-right: 3.4rem;
+}
+
+.singleCard_profileContainer > img{
+    width: 10%;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+
+    
+}
+.singleCard_image{
+    width: 100%;
+    padding-top: 0.6rem;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.singleCard_image > img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.optionsContainer{
+    display: flex;
+    height: 20%;
+    width: 100%;
+    justify-content: space-between;
+    padding-block: 0.6rem;
+}
+
+.singleOption_optionsContainer > svg{
+    height: 100%;
+    width: 8%;
+    cursor: pointer;
+    min-width: 1rem;
+}
+
+.singleOption_optionsContainer{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    
+}
+
+.commentsContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.allCommentsContainer{
+    /* width: 40vw; */
+    min-width: 40svw;
+    height: 80vh;
+    max-width: 1120px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 1.4rem;
+    position: relative;    
+}
+
+.postCommentContainer{
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    justify-content: center;
+    
+    
+}
+
+.postCommentContainer > input{
+    flex: 0.9;
+    padding-inline: 1.5rem;
+    padding-block: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(217, 216, 215);
+    outline: none;
+    
+}
+
+.postCommentContainer >input:focus{
+    border: 1px solid rgb(122, 127, 132);
+}
+
+.postCommentContainer_commentBtn{
+    flex: 0.1;
+    width: fit-content;
+    cursor: pointer;
+    background: rgb(100, 175, 236);
+    color: white;
+    padding-inline: 1.5rem;
+    padding-block: 1.2rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    
+}
+
+.singleComment {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.singleComment_profileContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.commentHeader p {
+  margin: 0;
+}
+
+.commentName {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.commentUsername {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.commentBody {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .allCommentsContainer{
+        width: 90%;
+    }
+}
+

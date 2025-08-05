@@ -1,0 +1,102 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90svh;
+    background: snow;
+}
+
+.cardContainer{
+    height: 80vh;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    width :80vw;
+    background: white;
+    box-shadow: 10px 10px 15px 0px rgb(173,173,173);
+}
+
+.cardContainer_left{
+    flex:0.6;
+    padding: 2rem;
+    text-align: center;
+    
+}
+
+.cardContainer_right{
+    flex: 0.4;
+    background: rgb(100, 175, 236);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding-inline: 0.9rem;
+}
+
+.card_left_heading{
+    font-size: 2rem;
+    font-weight: bold;
+    background: -webkit-linear-gradient(45deg,#000000,#9d9d9d);
+    background-clip: text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom: 2rem;
+}
+
+.inputField{
+    padding-inline: 1.3rem;
+    padding-block: 0.8rem;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid silver;
+    width: 100%;
+}
+.inputContainers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.3rem;
+    max-width: 400px;
+    margin: 0 auto;
+    gap: 1.5rem;
+}
+.inputRow{
+    width: fit-content;
+    display: flex;
+    gap:1.2rem;
+}
+
+.buttonWithoutline{
+    width: 100%;
+    cursor: pointer;
+    
+    transition: all 0.2s;
+    
+    font-size: 1rem;
+    background: rgb(100, 175, 236);
+    color: white;
+    padding: 0.8rem;
+    padding-inline: 1.5rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+.buttonWithoutline:hover{
+    background: rgb(77, 146, 204);
+}
+
+
+@media only screen and (max-width: 600px) {
+    .cardContainer{
+        flex-direction: column;
+    }
+    .cardContainer_left{
+        flex: 0.4;
+    }
+    .cardContainer_right{
+        flex: 0.6;
+    }
+}
