@@ -53,7 +53,7 @@ export default function ViewProfilePage({userProfile}) {
   }, [postState.posts]);
 
   useEffect(() => {
-    console.log(authState.connections,userProfile.userId._id);
+
     if(authState.connections.some(user => user.connectionId._id === userProfile.userId._id)) {
       setIsCurrentUserInConnection(true);
 

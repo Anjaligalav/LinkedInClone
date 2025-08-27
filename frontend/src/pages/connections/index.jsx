@@ -18,11 +18,11 @@ export default function MyConnectionsPage() {
     dispatch(getMyConnectionRequests({token: localStorage.getItem("token")}));
   },[])
 
-  useEffect(()=>{
-    if(authState.connectionRequest.length!==0){
-      console.log(authState.connectionRequest);
-    }
-  },[authState.connectionRequest])
+  // useEffect(()=>{
+  //   if(authState.connectionRequest.length!==0){
+  //     console.log(authState.connectionRequest);
+  //   }
+  // },[authState.connectionRequest])
 
   return (
     <UserLayout>
