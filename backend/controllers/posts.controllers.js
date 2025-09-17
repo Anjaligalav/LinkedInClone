@@ -18,10 +18,12 @@ export const createPost = async(req,res)=>{
         if(!user) return res.status(404).json({message:"User not found"});
 
         const post = new Post({
-            userId:user._id,
-            body:req.body.body,
-            media:req.file!==undefined?req.file.filename:"",
-            fileType:req.file!==undefined?req.file.mimetype.split("/")[1]:""
+            userId: user._id,
+            body: req.body.body,
+            // Use req.file.path for the Cloudinary URL
+            media: req.file !== undefined ? req.file.path : "", 
+            // Cloudinary provides the format, e.g., 'jpeg', 'png'
+            fileType: req.file !== undefined ? req.file.format : "" 
         });
 
         await post.save();

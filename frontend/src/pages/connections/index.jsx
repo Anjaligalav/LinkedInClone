@@ -37,7 +37,7 @@ export default function MyConnectionsPage() {
               <div onClick={() => router.push(`/view_profile/${request.userId.username}`)} key={index} className={styles.userCard}>
                 <div style={{display:"flex",alignItems:"center",gap:"1.2rem",justifyContent:"space-between"}}>
                   <div className={styles.profilePicture}>
-                    <img src={`${BASE_URL}/${request.userId.profilePicture}`} alt="" />
+                    <img src={request.userId.profilePicture} alt="" />
                   </div>
                   <div className={styles.userInfo}>
                     <h1>{request.userId.name}</h1>
@@ -63,7 +63,7 @@ export default function MyConnectionsPage() {
               <div onClick={() => router.push(`/view_profile/${request.userId.username}`)} key={index} className={styles.userCard}>
                 <div style={{display:"flex",alignItems:"center",gap:"1.2rem",justifyContent:"space-between"}}>
                   <div className={styles.profilePicture}>
-                    <img src={`${BASE_URL}/${request.userId.profilePicture}`} alt="" />
+                    <img src={request.userId.profilePicture} alt="" />
                   </div>
                   <div className={styles.userInfo}>
                     <h1>{request.userId.name}</h1>

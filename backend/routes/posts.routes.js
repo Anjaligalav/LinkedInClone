@@ -1,16 +1,27 @@
 import { Router } from "express";
 import { activeCheck, createPost,getAllPosts,deletePost,commentPost,getCommentsByPost,deleteCommentOfUser,increament_likes } from "../controllers/posts.controllers.js";
 import multer from "multer";
+import { CloudinaryStorage } from 'multer-storage-cloudinary'; // Import CloudinaryStorage
+import { v2 as cloudinary } from 'cloudinary'; // Import Cloudinary
 
 const router = Router();
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, 'uploads/')
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname)
+//     }
+// });
+
+// const upload = multer({ storage: storage });
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'ProConnect_Posts', // A folder name in your Cloudinary account
+    allowed_formats: ['jpeg', 'png', 'jpg'],
+  },
 });
 
 const upload = multer({ storage: storage });

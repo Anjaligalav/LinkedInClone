@@ -92,7 +92,7 @@ export default function ProfilePage() {
               <p>Edit</p>
             </label>
             <input onChange={(e) => updateProfilePicture(e.target.files[0])} hidden type="file" id="profilePictureUpload" />
-              <img src={`${BASE_URL}/${userProfile.userId.profilePicture}`} alt="" />
+              <img src={userProfile.userId.profilePicture} alt="" />
             
           </div>
 
@@ -133,7 +133,7 @@ export default function ProfilePage() {
                       <div className={styles.card}>
                         <div className={styles.card_profileContainer}>
                           {post.media !== ""?
-                          <img className={styles.card_profile} src={`${BASE_URL}/${post.media}`} alt="" />:
+                          <img className={styles.card_profile} src={post.media} alt="" />:
                           <div style={{width:"3.4rem",height:"3.4rem"}}></div>}
 
                           <p>{post.body}</p>

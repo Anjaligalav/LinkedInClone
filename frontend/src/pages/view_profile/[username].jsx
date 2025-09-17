@@ -88,7 +88,7 @@ export default function ViewProfilePage({userProfile}) {
       <DashboardLayout>
         <div className={styles.container}>
           <div className={styles.backDropContainer}>
-            <img className={styles.backDrop} src={`${BASE_URL}/${userProfile.userId.profilePicture}`} alt="" />
+            <img className={styles.backDrop} src={userProfile.userId.profilePicture} alt="" />
           </div>
 
           <div className={styles.profileContainerDetails}>
@@ -137,7 +137,7 @@ export default function ViewProfilePage({userProfile}) {
                       <div className={styles.card}>
                         <div className={styles.card_profileContainer}>
                           {post.media !== ""?
-                          <img className={styles.card_profile} src={`${BASE_URL}/${post.media}`} alt="" />:
+                          <img className={styles.card_profile} src={post.media} alt="" />:
                           <div style={{width:"3.4rem",height:"3.4rem"}}></div>}
 
                           <p>{post.body}</p>

@@ -54,7 +54,7 @@ export default function DashBoardComponent() {
               <div className={styles.createPostContainer}>
                 <img
                   className={styles.userProfile}
-                  src={`${BASE_URL}/${authState.User.userId.profilePicture}`}
+                  src={authState.User.userId.profilePicture}
                   alt="Profile"
                 />
                 <textarea
@@ -103,7 +103,7 @@ export default function DashBoardComponent() {
                       <div className={styles.singleCard_profileContainer}>
                         <img
                           className={styles.userProfile}
-                          src={`${BASE_URL}/${post.userId.profilePicture}`}
+                          src={post.userId.profilePicture}
                           alt="Profile"
                         />
                         <div
@@ -144,7 +144,7 @@ export default function DashBoardComponent() {
                           <div>
                             {post.media && (
                               <img
-                                src={`${BASE_URL}/${post.media}`}
+                                src={post.media}
                                 alt="Post"
                                 className={styles.singleCard_image}
                               />
@@ -214,7 +214,7 @@ export default function DashBoardComponent() {
                           <div className={styles.singleComment} key={index}>
                             <img
                               style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-                              src={`${BASE_URL}/${comment.userId.profilePicture}`}
+                              src={comment.userId.profilePicture}
                               alt=""
                             />
                             <div className={styles.singleComment_profileContainer}>

@@ -4,16 +4,17 @@ import { register,login,uploadProfilePicture,updateUserProfile,getUserAndProfile
   updateProfileData,getAllUserProfile,downloadProfile,sendConnectionRequest,getMyConnectionRequests,whatAreMyConnections,acceptConnectionRequest,getUserProfileBasedOnUsername } from "../controllers/user.controllers.js";
 import multer from "multer";
 import { get } from "mongoose";
+import { CloudinaryStorage } from 'multer-storage-cloudinary'; // Import
+import { v2 as cloudinary } from 'cloudinary'; // Import
 
 const router = Router();
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'ProConnect_Profiles', // New folder for profile pictures
+    allowed_formats: ['jpeg', 'png', 'jpg'],
+  },
 });
 
 const upload = multer({ storage: storage });

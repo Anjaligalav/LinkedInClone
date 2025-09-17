@@ -5,19 +5,34 @@ import bcrypt from "bcrypt";
 import crypto from "crypto";
 import PDFDocument from "pdfkit";
 import fs from "fs";
+import axios from "axios"; 
 
 
-const convertUserDataToPDF = async(userData)=>{
+// --- UPDATE THIS ENTIRE FUNCTION ---
+const convertUserDataToPDF = async (userData) => {
     const doc = new PDFDocument();
-    const outputPath = crypto.randomBytes(32).toString("hex")+".pdf";
+    const outputPath = crypto.randomBytes(32).toString("hex") + ".pdf";
     const stream = fs.createWriteStream("uploads/" + outputPath);
 
     doc.pipe(stream);
 
-    doc.image("uploads/" + userData.userId.profilePicture, {
-        width: 100,
-        align: "center"
-    });
+    // Fetch the profile picture from the Cloudinary URL
+    if (userData.userId.profilePicture) {
+        try {
+            const imageResponse = await axios.get(userData.userId.profilePicture, {
+                responseType: 'arraybuffer'
+            });
+            const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+            doc.image(imageBuffer, { // Use the downloaded image buffer
+                width: 100,
+                align: "center"
+            });
+        } catch (error) {
+            console.error("Could not fetch profile picture for PDF:", error.message);
+        }
+    }
+    
+    doc.moveDown(2); // Add some space after the image
 
     doc.fontSize(14).text(`Name: ${userData.userId.name}`);
 
@@ -108,7 +123,7 @@ export const uploadProfilePicture = async(req,res)=>{
 
         if(!user) return res.status(404).json({message:"User does not exist please register"});
 
-        user.profilePicture = req.file.filename;
+        user.profilePicture = req.file.path;
         await user.save();
         
         return res.json({message:"Profile picture Updated"});
@@ -189,17 +204,20 @@ export const getAllUserProfile = async(req,res)=>{
     }
 }
 
-export const downloadProfile = async(req,res)=>{
+// --- UPDATE THIS FUNCTION TO USE AWAIT ---
+export const downloadProfile = async (req, res) => {
     try {
         const user_id = req.query.id;
-        const userProfile = await Profile.findOne({userId:user_id}).populate('userId','name username email profilePicture');
+        const userProfile = await Profile.findOne({ userId: user_id }).populate('userId', 'name username email profilePicture');
 
-        let outputPath = await convertUserDataToPDF(userProfile);
-        return res.json({message:outputPath});
+        // Add 'await' since convertUserDataToPDF is now async
+        let outputPath = await convertUserDataToPDF(userProfile); 
+        return res.json({ message: outputPath });
     } catch (error) {
-        return res.status(500).json({message:error.message});
+        return res.status(500).json({ message: error.message });
     }
 }
+
 
 export const sendConnectionRequest = async(req,res)=>{
     try {
